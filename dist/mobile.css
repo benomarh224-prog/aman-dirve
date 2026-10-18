@@ -1,0 +1,235 @@
+/* Phone layout: readable copy, comfortable controls, and Safari-safe forms. */
+.brand-mark svg { width: 31px; height: 31px; stroke-width: 2; }
+.hero-link > span svg, .round-arrow svg { width: 20px; height: 20px; }
+.button > span svg { width: 20px; height: 20px; }
+.mobile-nav { display: none; }
+
+@media (max-width: 767px) {
+  html { scroll-padding-top: 100px; -webkit-text-size-adjust: 100%; }
+  body { font-size: 16px; line-height: 1.85; padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+  .wrap { width: calc(100% - 32px); }
+  main, section, .search-field, .filter-tools, .car-body { min-width: 0; }
+  .topbar { padding: 8px 0; font-size: 12px; }
+  .topbar .wrap { justify-content: center; }
+  .topbar .demo-label { display: none; }
+  header { position: sticky; top: 0; z-index: 20; }
+  .header-inner { height: 76px; gap: 12px; position: relative; }
+  .brand { font-size: 24px; gap: 9px; }
+  .brand small { font-size: 8px; letter-spacing: 2.6px; margin-top: 5px; }
+  .brand-mark { width: 44px; height: 44px; border-radius: 11px; }
+  .header-actions { margin-right: auto; gap: 0; }
+  .header-actions .small, .favorites-btn > span:nth-child(2) { display: none; }
+  .favorites-btn { min-width: 48px; min-height: 48px; gap: 5px; padding: 5px; }
+  .favorites-btn svg { width: 24px; height: 24px; }
+  .favorites-btn b { width: 21px; height: 21px; font-size: 11px; }
+  .menu-btn { display: grid; place-items: center; width: 44px; height: 48px; padding: 0; }
+  .menu-btn svg { width: 25px; height: 25px; }
+  .header-inner nav { display: none; position: absolute; top: 76px; right: -16px; left: -16px; padding: 12px 24px 18px; background: white; box-shadow: 0 16px 24px #10332e14; }
+  .header-inner nav.open { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+  .header-inner nav a { width: 100%; min-height: 50px; font-size: 16px; padding: 10px 0; }
+  .nav-active::after { display: none; }
+
+  .hero { display: flex; flex-direction: column; min-height: 0; margin-top: 16px; border-radius: 16px; }
+  .hero-copy { padding: 24px 24px 22px; }
+  .eyebrow { font-size: 13px; gap: 9px; }
+  h1 { font-size: clamp(30px, 8.5vw, 39px); line-height: 1.5; letter-spacing: -1px; margin: 13px 0 12px; }
+  .hero-copy > p { font-size: 15px; line-height: 1.95; color: #e1eae4; }
+  .hero-copy > p br { display: none; }
+  .hero-tags { flex-wrap: wrap; margin-top: 17px; gap: 7px 15px; font-size: 12px; line-height: 1.7; }
+  .hero-tags svg { width: 15px; height: 15px; }
+  .hero-link { width: 100%; min-height: 50px; margin-top: 20px; padding: 9px 15px; justify-content: space-between; gap: 12px; background: var(--lime); color: var(--deep); border-radius: 9px; font-size: 15px; }
+  .hero-link > span { width: 28px; height: 28px; border: 0; color: var(--deep); }
+  .hero-coordinate, .visual-index { display: none; }
+  .hero-visual { height: 164px; min-height: 164px; }
+  .hero-visual > img { object-position: 50% 57%; }
+  .image-top { top: 13px; right: 16px; left: 16px; font-size: 12px; }
+  .image-top > span:first-child { padding: 4px 10px; }
+  .round-arrow { height: 30px; width: 30px; }
+  .location-chip { right: 16px; bottom: 14px; padding: 9px 12px; gap: 9px; }
+  .location-chip > span { width: 32px; height: 32px; }
+  .location-chip b { font-size: 13px; }
+  .location-chip small { font-size: 12px; }
+  .location-chip svg { width: 19px; height: 19px; }
+  .image-caption { display: none; }
+
+  .search-box { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 15px 12px; margin-top: 18px; padding: 20px 16px; border-radius: 14px; }
+  .search-field, .search-field:first-child, .search-field:nth-child(4) { flex: initial; gap: 7px; padding: 0; border: 0; }
+  .search-field:first-child, .search-field:nth-child(4) { grid-column: 1 / -1; }
+  .search-field:nth-child(2), .search-field:nth-child(3) { padding: 0; }
+  .search-field > span { font-size: 13px; color: #61705f; gap: 7px; }
+  .search-field svg { width: 18px; height: 18px; }
+  .search-field input, .search-field select { display: block; width: 100%; max-width: 100%; min-width: 0; min-height: 50px; padding: 10px 11px; border: 1px solid #dce3d4; background-color: #f8faf5; border-radius: 8px; font-size: 16px; color: var(--ink); }
+  input[type="date"] { -webkit-appearance: none; appearance: none; min-width: 0; text-align: right; }
+  input[type="date"]::-webkit-date-and-time-value { text-align: right; min-height: 24px; }
+  .search-field input[type="date"] { font-size: 16px; padding-inline: 8px; }
+  .search-button { grid-column: 1 / -1; margin: 3px 0 0; min-height: 54px; font-size: 16px; gap: 10px; padding: 12px 18px; }
+  .search-button svg { width: 22px; height: 22px; }
+  .search-note { flex-wrap: wrap; gap: 7px 12px; font-size: 12px; line-height: 1.9; margin-top: 12px; }
+  .search-note > span { gap: 6px; }
+  .search-note svg { width: 15px; height: 15px; flex-shrink: 0; }
+  .search-note b { font-size: 12px; }
+
+  .categories { padding-top: 30px; padding-bottom: 30px; }
+  .section-kicker { font-size: 13px; color: #6b795f; }
+  .category-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; margin-top: 16px; }
+  .category-card { flex-direction: column; justify-content: center; gap: 7px; min-height: 100px; padding: 12px 5px; text-align: center; border-radius: 11px; }
+  .category-card svg { width: 49px; height: 30px; }
+  .category-card b { font-size: 14px; }
+  .category-card small { display: none; }
+  .listings { padding-top: 28px; padding-bottom: 35px; scroll-margin-top: 12px; }
+  h2 { font-size: 25px; line-height: 1.6; letter-spacing: -.6px; }
+  .section-title { flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 20px; }
+  .section-title p { font-size: 14px; line-height: 1.9; margin-top: 7px; }
+  .section-title > .text-button { min-height: 44px; font-size: 14px; gap: 14px; padding: 0; }
+  .text-button { min-height: 44px; font-size: 14px; }
+  .text-button span { font-size: 22px; }
+  .catalog-toolbar { flex-direction: column; gap: 16px; margin-bottom: 20px; }
+  .catalog-tabs { width: 100%; gap: 5px; }
+  .catalog-tabs button { flex: 1; min-width: 0; min-height: 46px; padding: 9px 5px; font-size: 13px; border-radius: 8px; }
+  .catalog-tabs button span { font-size: 11px; margin-right: 2px; }
+  .filter-tools { width: 100%; justify-content: space-between; gap: 12px; }
+  .outline-button, .filter-tools .outline-button { min-height: 46px; padding: 10px 16px; font-size: 14px; gap: 8px; border-radius: 8px; }
+  .outline-button svg { width: 19px; height: 19px; }
+  .sort-label { font-size: 12px; gap: 5px; min-width: 0; }
+  .sort-label > span { display: none; }
+  .sort-label select { font-size: 16px; width: 150px; min-height: 46px; max-width: 100%; }
+  .filter-panel { grid-template-columns: minmax(0, 1fr); gap: 18px; padding: 18px; }
+  .filter-panel label, .filter-panel label:nth-child(3) { grid-column: auto; font-size: 14px; gap: 8px; }
+  .filter-panel input, .filter-panel select { min-height: 50px; padding: 10px 12px; font-size: 16px; }
+  .filter-panel input[type="range"] { min-height: 36px; }
+  .filter-panel .text-button { justify-self: start; font-size: 14px; }
+  #active-summary { font-size: 13px; line-height: 1.8; }
+
+  .car-grid { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .car-card { border-radius: 14px; }
+  .car-image { height: auto; aspect-ratio: 1.65; }
+  .car-badge { right: 14px; top: 14px; font-size: 12px; padding: 4px 10px; border-radius: 5px; }
+  .heart-btn { width: 44px; height: 44px; left: 12px; top: 12px; }
+  .heart-btn svg { width: 23px; height: 23px; }
+  .illustrative { font-size: 11px; bottom: 8px; padding-inline: 6px; }
+  .car-body { padding: 19px 18px 16px; }
+  .car-heading { align-items: flex-start; gap: 10px; }
+  .car-heading h3 { font-size: 21px; line-height: 1.55; }
+  .car-year { flex-shrink: 0; font-size: 12px; padding: 4px 8px; }
+  .car-subtitle { font-size: 12px; margin: 6px 0 14px; color: #6c7864; }
+  .car-specs { justify-content: space-between; gap: 8px; padding-bottom: 15px; font-size: 12px; color: #65715f; }
+  .car-specs span { gap: 5px; }
+  .car-specs svg { width: 16px; height: 16px; }
+  .dealer-row { gap: 8px; margin: 12px 0; flex-wrap: wrap; }
+  .dealer-name { min-height: 44px; padding: 0; font-size: 13px; gap: 7px; text-align: right; }
+  .dealer-name span { width: 28px; height: 28px; font-size: 13px; flex-shrink: 0; }
+  .dealer-row small { font-size: 12px; color: #6b795f; }
+  .dealer-row small svg { width: 14px; height: 14px; }
+  .car-bottom { align-items: center; gap: 10px; }
+  .price { font-size: 13px; line-height: 1.65; }
+  .price b { font-size: 34px; }
+  .price small { max-width: 165px; font-size: 11px; line-height: 1.7; margin-top: 1px; color: #6e7967; }
+  .detail-btn { min-height: 50px; min-width: 116px; padding: 11px 16px; font-size: 15px; gap: 14px; border-radius: 9px; }
+  .detail-btn span { font-size: 21px; }
+  .compare-label { min-height: 44px; gap: 9px; margin-top: 13px; padding-top: 9px; border-top: 1px solid var(--line); font-size: 13px; color: #617154; }
+  .compare-label input { width: 19px; height: 19px; flex-shrink: 0; }
+  .load-more-row { gap: 12px; margin-top: 25px; }
+  .load-more-row .outline-button { width: 100%; min-height: 52px; font-size: 15px; }
+  .load-more-row small { font-size: 12px; }
+  .empty-state { padding: 30px 18px; }
+  .empty-state h3 { font-size: 20px; }
+  .empty-state p { font-size: 15px; }
+
+  .companies-section { padding-block: 32px; scroll-margin-top: 12px; }
+  .companies-section h2 { font-size: 25px; }
+  .companies-section .section-title { align-items: flex-start; }
+  .companies-section .section-title p { max-width: none; }
+  .company-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .company-card { min-width: 0; padding: 22px 9px 17px; border-radius: 12px; }
+  .company-logo { font-size: 24px; height: 44px; }
+  .company-card h3 { font-size: 14px; line-height: 1.8; margin-top: 12px; }
+  .company-card p { font-size: 12px; margin-top: 5px; margin-bottom: 14px; }
+  .company-card p svg { width: 14px; height: 14px; }
+  .company-card > span:last-child { font-size: 12px; padding-top: 13px; }
+  .company-card > span:last-child b { font-size: 14px; }
+  .demo-footnote { font-size: 12px; line-height: 1.9; margin-top: 18px; color: #6b795f; }
+  .how-section { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-block: 36px; }
+  .how-intro h2 { font-size: 27px; margin-block: 10px; }
+  .how-intro .text-button { display: none; }
+  .steps { grid-template-columns: minmax(0, 1fr); gap: 25px; }
+  .steps article { padding: 0 62px 0 24px; min-height: 93px; }
+  .steps article > i { position: absolute; right: 0; top: 5px; width: 46px; height: 46px; }
+  .steps article > span { top: 6px; font-size: 12px; }
+  .steps h3 { font-size: 17px; margin: 0 0 8px; }
+  .steps p { font-size: 14px; line-height: 1.95; }
+  .partner-banner { flex-direction: column; align-items: stretch; gap: 22px; padding: 28px 24px; border-radius: 14px; }
+  .partner-banner h2 { font-size: 27px; margin-block: 12px; }
+  .partner-banner p { font-size: 14px; line-height: 1.95; }
+  .partner-banner .button { width: 100%; min-height: 52px; font-size: 15px; }
+  .faq-section { grid-template-columns: minmax(0, 1fr); gap: 22px; padding-block: 36px; }
+  .faq-section h2 { font-size: 27px; }
+  .faqs details { padding: 18px 0; }
+  .faqs summary { font-size: 15px; min-height: 44px; align-items: center; gap: 12px; }
+  .faqs p { font-size: 14px; line-height: 2; }
+  footer { padding-top: 28px; }
+  .footer-main { flex-direction: column; align-items: flex-start; gap: 20px; padding-bottom: 24px; }
+  .footer-main .brand { font-size: 24px; }
+  .footer-main .brand-mark { width: 44px; height: 44px; }
+  .footer-main > div { width: 100%; margin: 0; justify-content: space-between; gap: 16px; font-size: 14px; }
+  .footer-main > div a, .footer-link { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; }
+  .footer-bottom { flex-direction: column; gap: 5px; padding-block: 18px; font-size: 12px; }
+  .footer-bottom > span:last-child { font-size: 12px; }
+
+  .mobile-nav { display: flex; position: fixed; z-index: 25; bottom: 0; right: 0; left: 0; justify-content: space-around; gap: 4px; padding: 8px max(12px, env(safe-area-inset-right, 0px)) calc(8px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); background: #fff; border-top: 1px solid #e0e6d8; box-shadow: 0 -5px 24px #163e3509; }
+  .mobile-nav a, .mobile-nav button { display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-width: 0; min-height: 54px; padding: 4px; color: #697761; border-radius: 9px; font-size: 12px; font-weight: 600; line-height: 1.5; }
+  .mobile-nav svg { width: 23px; height: 23px; }
+  .mobile-nav [aria-current="page"] { background: #eef4e3; color: var(--green); }
+  #compare-bar { bottom: calc(88px + env(safe-area-inset-bottom, 0px)); z-index: 24; width: calc(100% - 24px); font-size: 13px; padding: 12px; gap: 10px; }
+  #compare-bar > div { gap: 8px; }
+  #compare-bar > div > button:first-child { min-width: 44px; min-height: 44px; font-size: 13px; }
+  #compare-bar .button { min-height: 46px; padding-inline: 12px; font-size: 13px; }
+  .toast { bottom: calc(90px + env(safe-area-inset-bottom, 0px)); z-index: 40; font-size: 14px; line-height: 1.8; padding: 12px 18px; width: max-content; max-width: calc(100% - 32px); }
+  body:has(#compare-bar:not([hidden])) .toast { bottom: calc(173px + env(safe-area-inset-bottom, 0px)); }
+
+  dialog { width: calc(100% - 16px); max-height: calc(100dvh - 24px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)); padding: 18px; border-radius: 16px; }
+  .modal-top { position: sticky; top: -18px; z-index: 2; background: var(--bg); padding: 10px 0; margin-top: -8px; border-bottom: 1px solid var(--line); }
+  .close-modal { width: 44px; height: 44px; font-size: 30px; flex-shrink: 0; }
+  .modal-title { font-size: 24px; line-height: 1.7; }
+  .modal-description { font-size: 15px; line-height: 1.9; }
+  .modal-car-image { height: auto; aspect-ratio: 1.65; }
+  .detail-layout { grid-template-columns: minmax(0, 1fr); gap: 15px; margin-top: 18px; }
+  .detail-layout h3 { font-size: 18px; }
+  .detail-layout ul { font-size: 14px; line-height: 2.2; }
+  .subnote { font-size: 13px; line-height: 1.9; }
+  .booking-box { padding: 18px; }
+  .booking-box label, .join-form label { font-size: 14px; gap: 7px; margin-bottom: 15px; }
+  .booking-box input, .booking-box select, .join-form input, .join-form select { min-height: 50px; min-width: 0; max-width: 100%; padding: 10px 12px; font-size: 16px; border-radius: 8px; }
+  .booking-box .button, .join-form .button, .success-block .button { width: 100%; min-height: 52px; font-size: 15px; }
+  .cost-row { font-size: 15px; align-items: center; gap: 12px; }
+  .cost-row b { font-size: 29px; }
+  .join-form { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .join-form .full { grid-column: auto; }
+  .request-summary { font-size: 15px; padding: 16px; }
+  .success-block p { font-size: 15px; line-height: 1.9; }
+  .modal-company-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .modal-company-grid .company-logo { font-size: 21px; }
+  .modal-company-grid .company-card h3 { font-size: 13px; }
+  .modal-favorites { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .company-profile { padding: 20px; }
+  .company-profile p { font-size: 14px; }
+  .comparison { min-width: 550px; font-size: 14px; }
+  .comparison th, .comparison td { padding: 13px 10px; font-size: 13px; }
+  .comparison .button { min-height: 46px; font-size: 13px; white-space: nowrap; }
+}
+
+@media (max-width: 359px) {
+  .wrap { width: calc(100% - 24px); }
+  .brand { font-size: 21px; }
+  .brand-mark { width: 39px; height: 39px; }
+  .hero-copy { padding: 22px 18px; }
+  .hero-copy > p { font-size: 14px; }
+  .hero-tags { font-size: 12px; gap: 7px 10px; }
+  .search-box { padding: 18px 12px; gap: 15px 8px; }
+  .car-body { padding-inline: 14px; }
+  .car-specs { gap: 6px; flex-wrap: wrap; }
+  .car-bottom { flex-wrap: wrap; }
+  .detail-btn { flex: 1; min-width: 105px; }
+  .price small { max-width: 143px; }
+  .company-card h3 { font-size: 13px; }
+  .company-card > span:last-child { font-size: 11px; }
+}
