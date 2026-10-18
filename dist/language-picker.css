@@ -6,6 +6,8 @@
 .language-toggle [data-language-label] { font-size: 13px; font-weight: 700; line-height: 1.5; white-space: nowrap; }
 .language-toggle .language-chevron { width: 12px; height: 12px; flex-shrink: 0; color: #72875f; transition: transform .18s; }
 .language-toggle[aria-expanded="true"] .language-chevron { transform: rotate(180deg); }
+.modal-top > .section-kicker { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.modal-top > .language-toggle, .modal-top > .close-modal { flex-shrink: 0; }
 #language-picker { position: fixed; inset: auto; margin: 0; padding: 18px; border: 1px solid #dfe8d4; border-radius: 18px; color: var(--ink); background: #fff; box-shadow: 0 18px 55px #10332e28,0 3px 10px #10332e08; z-index: 100; overflow-y: auto; overscroll-behavior: contain; font-family: 'Noto Sans Arabic',sans-serif; }
 #language-picker:popover-open { animation: language-picker-enter .18s cubic-bezier(.2,.8,.2,1); }
 #language-picker::backdrop { background: transparent; backdrop-filter: none; }

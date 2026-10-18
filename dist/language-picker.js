@@ -19,8 +19,8 @@
   function sync(){
     const arabic=document.documentElement.lang==='ar';
     picker.dir=arabic?'rtl':'ltr';
-    picker.querySelector('#language-picker-title').textContent=arabic?'اختار لغتك':'Make yourself at home';
-    picker.querySelector('#language-picker-description').textContent=arabic?'تصفّح بالطريقة اللي كتريحك':'Choose your preferred language';
+    picker.querySelector('#language-picker-title').textContent=arabic?'اختار لغتك':'Choose your language';
+    picker.querySelector('#language-picker-description').textContent=arabic?'تصفّح بالطريقة اللي كتريحك':'Arabic or English. Your choice.';
     picker.querySelector('#language-picker-note').textContent=arabic?'اختيارك كيبقى محفوظ على هاد الجهاز':'Your choice is saved on this device';
     picker.querySelectorAll('[data-language]').forEach(button=>{
       const selected=button.dataset.language===document.documentElement.lang;
