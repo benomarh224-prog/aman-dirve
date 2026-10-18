@@ -1,0 +1,3 @@
+import fs from 'node:fs/promises';
+const assets={amman:'photo-1627734633024-867b54f26e1f',sedan:'photo-1621007947382-bb3c3994e3fb',compact:'photo-1549317661-bd32c8ce0db2',mercedes:'photo-1618843479313-40f8afb4b4d8',suv:'photo-1519641471654-76ce0107ad1b',bmw:'photo-1555215695-3004980ad54e',tesla:'photo-1560958089-b8a1929cea89',family:'photo-1519641471654-76ce0107ad1b'};
+for(const [name,id] of Object.entries(assets)){const res=await fetch(`https://images.unsplash.com/${id}?auto=format&fit=crop&w=${name==='amman'?1400:850}&q=85`);if(!res.ok)throw Error(`${name}: ${res.status}`);const bytes=new Uint8Array(await res.arrayBuffer());await fs.writeFile(`dist/assets/${name}.jpg`,bytes);console.log(name,bytes.length);}
