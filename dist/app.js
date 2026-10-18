@@ -71,6 +71,7 @@ function openDrawer(){
   $$('.drawer-link',menuDrawer).forEach(item=>{if(item.dataset.menuAction===active)item.setAttribute('aria-current','page');else item.removeAttribute('aria-current');});
   menuDrawer.classList.remove('is-closing');
   menuDrawer.showModal();
+  $('.drawer-scroll',menuDrawer).scrollTop=0;
   $('#menu-btn').setAttribute('aria-expanded','true');
 }
 function closeDrawer(afterClose){
