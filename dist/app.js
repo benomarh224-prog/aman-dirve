@@ -1,5 +1,6 @@
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const icons={pin:'<path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>',calendar:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 11h18m-13 4h2m4 0h2"/>',car:'<path d="m4 10 2-6h12l2 6M3 11h18v7H3zM5 18v3m14-3v3M7 14h1m8 0h1M5 10h14"/>',heart:'<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/>',search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>',check:'<path d="m5 12 4 4L19 6"/>',shield:'<path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6z"/><path d="m8 12 3 3 5-6"/>',filter:'<path d="M4 6h16M7 12h10m-7 6h4"/><circle cx="8" cy="6" r="2" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="2" fill="currentColor" stroke="none"/>',user:'<circle cx="12" cy="7" r="3"/><path d="M5 21v-3a7 7 0 0 1 14 0v3"/>',gear:'<path d="M6 3v12m12-12v6M6 9h12m-6 0v12"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="12" r="3"/>',fuel:'<path d="M4 21V4h10v17M3 21h12M4 10h10m0-4h3l3 4v7a2 2 0 0 1-4 0v-3h-2"/>',compare:'<path d="M4 7h16m-4-4 4 4-4 4M20 17H4m4-4-4 4 4 4"/>',key:'<circle cx="8" cy="8" r="5"/><path d="m12 12 9 9m-3-3 3-3m-6 0 3-3"/>',bolt:'<path d="m13 2-9 12h7l-1 8 10-12h-7z"/>'};
+icons.sparkle='<path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/>';
 icons.home='<path d="m3 10 9-7 9 7v11h-6v-7H9v7H3z"/>';
 icons.building='<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h1m4 0h1M9 11h1m4 0h1M10 21v-6h4v6"/>';
 const svg=(key)=>`<svg viewBox="0 0 24 24" aria-hidden="true">${icons[key]||icons.car}</svg>`;
@@ -32,7 +33,7 @@ $('#search-form').addEventListener('submit',e=>{e.preventDefault();if(daysBetwee
 $('#categories').addEventListener('click',e=>{const b=e.target.closest('[data-category]');if(b){state.category=b.dataset.category;state.favorites=false;$('#search-category').value=state.category;shown=6;render();scrollCars();}});
 $$('[data-tab]').forEach(b=>b.onclick=()=>{state.category=b.dataset.tab;$('#search-category').value=state.category;shown=6;render();});
 $('#filter-btn').onclick=()=>{$('#filter-panel').hidden=!$('#filter-panel').hidden;$('#filter-btn').setAttribute('aria-expanded',!$('#filter-panel').hidden);};
-$('#company-filter').onchange=e=>{state.company=e.target.value;shown=6;render();};$('#budget').oninput=e=>{state.budget=Number(e.target.value);$('#budget-label').textContent=state.budget+' د.أ';shown=6;render();};$('#keyword').oninput=e=>{state.keyword=e.target.value.trim();shown=6;render();};$('#sort').onchange=e=>{state.sort=e.target.value;render();};$('#reset-filters').onclick=reset;$('#all-cars').onclick=()=>{reset();shown=12;render();};$('#load-more').onclick=()=>{shown+=6;render();};$('#favorites-btn').onclick=()=>{reset();state.favorites=true;shown=36;render();scrollCars();};$('#menu-btn').onclick=()=>{const n=$('header nav');n.classList.toggle('open');$('#menu-btn').setAttribute('aria-expanded',n.classList.contains('open'));};$$('header nav a').forEach(a=>a.onclick=()=>{$('header nav').classList.remove('open');$('#menu-btn').setAttribute('aria-expanded','false');});
+$('#company-filter').onchange=e=>{state.company=e.target.value;shown=6;render();};$('#budget').oninput=e=>{state.budget=Number(e.target.value);$('#budget-label').textContent=state.budget+' د.أ';shown=6;render();};$('#keyword').oninput=e=>{state.keyword=e.target.value.trim();shown=6;render();};$('#sort').onchange=e=>{state.sort=e.target.value;render();};$('#reset-filters').onclick=reset;$('#all-cars').onclick=()=>{reset();shown=12;render();};$('#load-more').onclick=()=>{shown+=6;render();};$('#favorites-btn').onclick=()=>{reset();state.favorites=true;shown=36;render();scrollCars();};$('#menu-btn').onclick=openDrawer;$$('header nav a').forEach(a=>a.onclick=()=>{$('header nav').classList.remove('open');$('#menu-btn').setAttribute('aria-expanded','false');});
 const modal=$('#modal');let previousFocus;
 function openModal(html,eyebrow='عمّان درايف'){previousFocus=document.activeElement;$('#modal-content').innerHTML=html;$('#modal-eyebrow').textContent=eyebrow;hydrateIcons(modal);if(!modal.open)modal.showModal();modal.scrollTop=0;}
 function closeModal(){modal.close();previousFocus?.focus?.();}
@@ -58,3 +59,53 @@ const quickNav=$('.mobile-nav');
 function selectQuickNav(item){$$('a,button',quickNav).forEach(link=>{if(link===item)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});}
 quickNav.addEventListener('click',e=>{const item=e.target.closest('a,button');if(!item)return;selectQuickNav(item);$('header nav').classList.remove('open');$('#menu-btn').setAttribute('aria-expanded','false');if(item.id==='mobile-favorites')$('#favorites-btn').click();else if(item.getAttribute('href')==='#cars'&&state.favorites)reset();});
 $('#favorites-btn').addEventListener('click',()=>selectQuickNav($('#mobile-favorites')));
+
+// The native dialog supplies Escape handling, a focus trap, and an inert backdrop.
+const menuDrawer=$('#menu-drawer');
+let drawerClosing=false;
+function openDrawer(){
+  if(menuDrawer.open||drawerClosing)return;
+  $('#drawer-fav-count').textContent=favorites.size;
+  const quickActive=$('[aria-current="page"]',quickNav);
+  const active=state.favorites?'favorites':quickActive?.getAttribute('href')==='#companies'?'companies':quickActive?.getAttribute('href')==='#cars'?'cars':'home';
+  $$('.drawer-link',menuDrawer).forEach(item=>{if(item.dataset.menuAction===active)item.setAttribute('aria-current','page');else item.removeAttribute('aria-current');});
+  menuDrawer.classList.remove('is-closing');
+  menuDrawer.showModal();
+  $('#menu-btn').setAttribute('aria-expanded','true');
+}
+function closeDrawer(afterClose){
+  if(!menuDrawer.open||drawerClosing)return;
+  drawerClosing=true;
+  menuDrawer.classList.add('is-closing');
+  const finish=()=>{$('#menu-btn').setAttribute('aria-expanded','false');menuDrawer.close();menuDrawer.classList.remove('is-closing');drawerClosing=false;if(afterClose)afterClose();};
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)finish();else setTimeout(finish,180);
+}
+$('#drawer-close').onclick=()=>closeDrawer();
+menuDrawer.addEventListener('cancel',e=>{e.preventDefault();closeDrawer();});
+menuDrawer.addEventListener('keydown',e=>{
+  if(e.key!=='Tab')return;
+  const items=$$('button:not([disabled]),a[href]',menuDrawer).filter(el=>el.getClientRects().length);
+  const first=items[0],last=items[items.length-1];
+  if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+  else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+});
+menuDrawer.addEventListener('close',()=>{$('#menu-btn').setAttribute('aria-expanded','false');});
+menuDrawer.addEventListener('click',e=>{
+  if(e.target===menuDrawer){const r=menuDrawer.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeDrawer();return;}
+  const category=e.target.closest('[data-menu-category]');
+  if(category){closeDrawer(()=>{state.category=category.dataset.menuCategory;state.favorites=false;$('#search-category').value=state.category;shown=6;render();selectQuickNav($('.mobile-nav a[href="#cars"]'));scrollCars();});return;}
+  const item=e.target.closest('[data-menu-action]');
+  if(!item)return;
+  closeDrawer(()=>{
+    switch(item.dataset.menuAction){
+      case 'home':reset();selectQuickNav($('.mobile-nav a[href="#"]'));window.scrollTo({top:0,behavior:'smooth'});break;
+      case 'cars':reset();selectQuickNav($('.mobile-nav a[href="#cars"]'));scrollCars();break;
+      case 'companies':selectQuickNav($('.mobile-nav a[href="#companies"]'));$('#companies').scrollIntoView({behavior:'smooth'});break;
+      case 'favorites':$('#favorites-btn').click();break;
+      case 'how':$('#how').scrollIntoView({behavior:'smooth'});break;
+      case 'join':join();break;
+      case 'privacy':$('#privacy-btn').click();break;
+    }
+  });
+});
+matchMedia('(min-width: 768px)').addEventListener('change',e=>{if(e.matches&&menuDrawer.open)closeDrawer();});
