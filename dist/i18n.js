@@ -164,18 +164,19 @@
     if(meta)meta.content=language==='ar'?'RentCarMuscat: قارن السيارات وشركات التأجير في عمّان. واجهة بالعربية والإنجليزية.':'RentCarMuscat: compare rental cars and companies in Amman. Explore in Arabic or English.';
     visit(document.body);
     document.querySelectorAll('[data-language]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.language===language)));
-    document.querySelectorAll('[data-language-toggle]').forEach(button=>{button.setAttribute('aria-label',language==='ar'?'Switch to English':'التبديل إلى العربية');button.querySelector('[data-language-label]').textContent=language==='ar'?'EN':'عربي';});
+    document.querySelectorAll('[data-language-toggle]').forEach(button=>{button.setAttribute('aria-label',language==='ar'?'اختيار اللغة، الحالية: العربية':'Choose language, current: English');button.querySelector('[data-language-label]').textContent=language==='ar'?'العربية':'English';});
   }
   function setLanguage(next){
     if(!['ar','en'].includes(next))return;
     language=next;
     try{localStorage.setItem('rentcarmuscat-language',language);}catch{}
     apply();
+    document.dispatchEvent(new CustomEvent('languagechange',{detail:{language}}));
   }
   document.addEventListener('click',e=>{
     const option=e.target.closest('[data-language]');
     if(option){setLanguage(option.dataset.language);return;}
-    if(e.target.closest('[data-language-toggle]'))setLanguage(language==='ar'?'en':'ar');
+
   });
   apply();
   new MutationObserver(records=>{
