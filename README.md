@@ -1,6 +1,6 @@
-# عمّان درايف / Amman Drive
+# RentCarMuscat
 
-Arabic RTL multi-company car rental marketplace prototype for Amman, Jordan.
+Arabic and English multi-company car rental marketplace prototype for Amman, Jordan.
 
 [Private hosted preview](https://amman-drive-arena.y27qbdznb6.chatgpt.site/) · [GitHub repository](https://github.com/benomarh224-prog/aman-dirve)
 
@@ -27,3 +27,5 @@ Includes 18 explicitly fictional companies and 36 illustrative listings, locatio
 Production requires real verified company inventory, live availability, company onboarding, authentication, a database, notifications and booking integrations. This prototype has no payment processor or reservation backend.
 
 Images: Unsplash. Amman photo by Daniel Qura: https://unsplash.com/photos/MHzsbAYKkv0. Vehicle photos illustrate categories and do not guarantee model matches. `download-assets.mjs` retains asset source IDs. Google Fonts: Noto Sans Arabic, Manrope.
+
+Language can be changed in the header or side menu. Arabic uses RTL and English uses LTR. The preference is saved locally; switching languages preserves the current search, dates, favorites and form entries. The existing Amman, Jordan demo content and JOD prices are retained.
